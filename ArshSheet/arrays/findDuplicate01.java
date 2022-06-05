@@ -4,7 +4,7 @@ package ArshSheet.arrays;
 // time O(n)
 // space O(n)
 
-public class findDuplicate {
+public class findDuplicate01 {
 
     static int finder(int[] arr, int n) {
         int[] cnt = new int[n + 1];
