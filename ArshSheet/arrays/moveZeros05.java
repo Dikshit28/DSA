@@ -8,14 +8,12 @@ public class moveZeros05 {
         // j tracks !0
         while (j < n) {
             if (arr[j] != 0) {
-                if (arr[i] != 0) {
-                    i++;
-                } else {
+                if (arr[i] == 0) {
                     int temp = arr[j];
                     arr[j] = 0;
                     arr[i] = temp;
-                    i++;
                 }
+                i++;
             }
             j++;
         }
