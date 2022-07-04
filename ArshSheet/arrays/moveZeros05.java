@@ -9,9 +9,8 @@ public class moveZeros05 {
         while (j < n) {
             if (arr[j] != 0) {
                 if (arr[i] == 0) {
-                    int temp = arr[j];
+                    arr[i] = arr[j];
                     arr[j] = 0;
-                    arr[i] = temp;
                 }
                 i++;
             }

@@ -3,8 +3,7 @@ package ArshSheet.arrays;
 import java.util.Arrays;
 
 public class chocolateDistribution07 {
-    static int findMinDiff(int arr[], int n,
-            int m) {
+    static int findMinDiff(int arr[], int n, int m) {
         // if there are no chocolates or
         // number of students is 0
         if (m == 0 || n == 0)
