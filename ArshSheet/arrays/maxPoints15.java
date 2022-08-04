@@ -32,9 +32,11 @@ public class maxPoints15 {
     }
 
     public static void main(String[] args) {
-        int[] nums = { 9, 7, 7, 9, 7, 7, 9 };
-        int k = 7;
+        int[] nums = { 1, 2, 3, 4, 5, 6, 1 };
+        int k = 3;
         int out = solver(nums, k);
         System.out.println(out);
+        int out1 = optimal(nums, k);
+        System.out.println(out1);
     }
 }

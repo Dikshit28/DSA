@@ -8,14 +8,10 @@ public class findingDups11 {
         HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
         if (nums.length == 0)
             return list;
-
         for (int i = 0; i < nums.length; i++) {
-
             if (hm.containsKey(nums[i])) {
-
                 list.add(nums[i]);
                 hm.put(nums[i], hm.get(nums[i]) + 1);
-
             } else
                 hm.put(nums[i], 1);
         }
