@@ -11,12 +11,49 @@ public class maxPoints15 {
             tot[i + 1] = nums[i] + tot[i];
         }
         int i = 0;
+        boolean check = true;
         while (i <= k) {
-            res = Math.max(res, tot[n] - (tot[n - k + i] - tot[i]));
+            // k values should be distinct
+            for (int j = i; j < k - 1; j++) {
+                if (nums[j] == nums[j + 1]) {
+                    check = false;
+                    break;
+                }
+            }
+            if (check) {
+                res = Math.max(res, tot[n] - (tot[n - k + i] - tot[i]));
+            }
             i++;
         }
 
         return res;
+    }
+
+    static int maxSum(int arr[], int n, int k) {
+        // n must be greater
+        if (n < k) {
+            System.out.println("Invalid");
+            return -1;
+        }
+
+        // Compute sum of first window of size k
+        int max_sum = 0;
+        for (int i = 0; i < k; i++)
+            max_sum += arr[i];
+
+        // Compute sums of remaining windows by
+        // removing first element of previous
+        // window and adding last element of
+        // current window.
+        int window_sum = max_sum;
+        for (int i = k; i < n; i++) {
+            window_sum += arr[i] - arr[i - k];
+            int j = 0;
+            while(j<)
+            max_sum = Math.max(max_sum, window_sum);
+        }
+
+        return max_sum;
     }
 
     static int optimal(int[] C, int K) {
@@ -32,11 +69,13 @@ public class maxPoints15 {
     }
 
     public static void main(String[] args) {
-        int[] nums = { 1, 2, 3, 4, 5, 6, 1 };
+        int[] nums = { 1, 2, 7, 7, 4, 3, 6 };
         int k = 3;
         int out = solver(nums, k);
         System.out.println(out);
         int out1 = optimal(nums, k);
         System.out.println(out1);
+        int out2 = maxSum(nums, nums.length, k);
+        System.out.println(out2);
     }
 }
