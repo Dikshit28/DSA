@@ -48,8 +48,6 @@ public class maxPoints15 {
         int window_sum = max_sum;
         for (int i = k; i < n; i++) {
             window_sum += arr[i] - arr[i - k];
-            int j = 0;
-            while(j<)
             max_sum = Math.max(max_sum, window_sum);
         }
 
