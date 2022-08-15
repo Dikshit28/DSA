@@ -1,7 +1,7 @@
 package ArshSheet.mathematics;
 
 public class minMoves40 {
-    public static int moves(int[] arr) {
+    public static int minMoves(int[] arr) {
         int n = arr.length;
         int sum = 0;
         int minnum = Integer.MAX_VALUE;
@@ -14,6 +14,6 @@ public class minMoves40 {
 
     public static void main(String[] args) {
         int[] arr = {};
-        System.out.println(moves(arr));
+        System.out.println(minMoves(arr));
     }
 }
