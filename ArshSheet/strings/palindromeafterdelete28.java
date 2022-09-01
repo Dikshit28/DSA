@@ -27,7 +27,7 @@ public class palindromeafterdelete28 {
     }
 
     public static void main(String[] args) {
-        String s = "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga";
+        String s = "abca";
         System.out.println(validPalindrome(s));
     }
 }
