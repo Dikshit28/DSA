@@ -1,6 +1,7 @@
 package ArshSheet.trees;
 
 import java.util.*;
+import javafx.util.*;
 
 public class TreeTraversals {
     public static void preorder(TreeNode root) {
@@ -55,6 +56,32 @@ public class TreeTraversals {
         }
         while (!st2.isEmpty()) {
             postorder.add(st2.pop().val);
+        }
+        return postorder;
+    }
+
+    public static List<Integer> postorderIterative2(TreeNode root) {
+        List<Integer> postorder = new ArrayList<>();
+        TreeNode curr = root;
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode temp;
+        while (curr != null || !st.isEmpty()) {
+            if (curr != null) {
+                st.push(curr);
+                curr = curr.left;
+            } else {
+                temp = st.peek().right;
+                if (temp == null) {
+                    temp = st.pop();
+                    postorder.add(temp.val);
+                    while (!st.isEmpty() && temp == st.peek().right) {
+                        temp = st.pop();
+                        postorder.add(temp.val);
+                    }
+                } else {
+                    curr = temp;
+                }
+            }
         }
         return postorder;
     }
@@ -114,6 +141,65 @@ public class TreeTraversals {
         return wrapList;
     }
 
+    static class Pair {
+        TreeNode first;
+        int second;
+
+        public Pair(TreeNode first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    static void allTraversal(TreeNode root) {
+
+        ArrayList<Integer> pre = new ArrayList<>();
+        ArrayList<Integer> in = new ArrayList<>();
+        ArrayList<Integer> post = new ArrayList<>();
+        Stack<Pair> s = new Stack<>();
+        s.push(new Pair(root, 1));
+        while (!s.empty()) {
+            Pair p = s.peek();
+            if (p.second == 1) {
+                s.peek().second++;
+                pre.add(p.first.val);
+                if (p.first.left != null) {
+                    s.push(new Pair(p.first.left, 1));
+                }
+            } else if (p.second == 2) {
+
+                s.peek().second++;
+                in.add(p.first.val);
+                if (p.first.right != null) {
+                    s.push(new Pair(p.first.right, 1));
+                }
+            } else {
+                post.add(p.first.val);
+                s.pop();
+            }
+        }
+
+        System.out.print("Preorder Traversal: ");
+        for (int i : pre) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        // Printing Inorder
+        System.out.print("Inorder Traversal: ");
+        for (int i : in) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        // Printing Postorder
+        System.out.print("Postorder Traversal: ");
+        for (int i : post) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode l1 = new TreeNode(2);
@@ -147,10 +233,12 @@ public class TreeTraversals {
         List<Integer> post = postorderIterative(root);
         System.out.println(post);
         System.out.println("PostOrder iterative Single Stack");
-        // List<Integer> postsingle = postorderIterative2(root);
-        // System.out.println(postsingle);
+        List<Integer> postsingle = postorderIterative2(root);
+        System.out.println(postsingle);
         System.out.println("InOrder iterative");
         List<Integer> in = inorderIterative(root);
         System.out.println(in);
+        System.out.println("AllOrder Iterative");
+        allTraversal(root);
     }
 }
