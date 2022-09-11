@@ -1,23 +1,21 @@
 package ArshSheet.trees;
 
-public class diameterOfTree96 {
-    static int max = 0;
+public class maximumPathSum99 {
+    static int maxValue = 0;
 
-    public static int diameterOfBinaryTree(TreeNode root) {
-        maxDepth(root);
-        return max;
+    public static int maxPathSum(TreeNode root) {
+        maxValue = Integer.MIN_VALUE;
+        maxPathDown(root);
+        return maxValue;
     }
 
-    private static int maxDepth(TreeNode root) {
-        if (root == null)
+    private static int maxPathDown(TreeNode node) {
+        if (node == null)
             return 0;
-
-        int left = maxDepth(root.left);
-        int right = maxDepth(root.right);
-
-        max = Math.max(max, left + right);
-
-        return Math.max(left, right) + 1;
+        int left = Math.max(0, maxPathDown(node.left));
+        int right = Math.max(0, maxPathDown(node.right));
+        maxValue = Math.max(maxValue, left + right + node.val);
+        return Math.max(left, right) + node.val;
     }
 
     public static void main(String[] args) {
@@ -45,6 +43,6 @@ public class diameterOfTree96 {
          *** 8
          ** 9
          */
-        System.out.println(diameterOfBinaryTree(root));
+        System.out.println(maxPathSum(root));
     }
 }

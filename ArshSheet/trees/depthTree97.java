@@ -1,22 +1,14 @@
 package ArshSheet.trees;
 
-public class diameterOfTree96 {
-    static int max = 0;
-
-    public static int diameterOfBinaryTree(TreeNode root) {
-        maxDepth(root);
-        return max;
-    }
-
-    private static int maxDepth(TreeNode root) {
+public class depthTree97 {
+    public static int maxDepth(TreeNode root) {
+        // Base Condition
         if (root == null)
             return 0;
-
+        // Hypothesis
         int left = maxDepth(root.left);
         int right = maxDepth(root.right);
-
-        max = Math.max(max, left + right);
-
+        // Induction
         return Math.max(left, right) + 1;
     }
 
@@ -45,6 +37,6 @@ public class diameterOfTree96 {
          *** 8
          ** 9
          */
-        System.out.println(diameterOfBinaryTree(root));
+        System.out.println(maxDepth(root));
     }
 }

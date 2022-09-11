@@ -1,7 +1,6 @@
 package ArshSheet.trees;
 
 import java.util.*;
-import javafx.util.*;
 
 public class TreeTraversals {
     public static void preorder(TreeNode root) {
