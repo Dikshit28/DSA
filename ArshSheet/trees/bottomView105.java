@@ -1,10 +1,9 @@
 package ArshSheet.trees;
 
-import java.util.*;
+import java.util.*;;
 
-public class topView104 {
-
-    public static Map<Integer, TreeNode> topView(TreeNode root) {
+public class bottomView105 {
+    public static Map<Integer, TreeNode> bottomView(TreeNode root) {
         class QueueObj {
             TreeNode node;
             int hd;
@@ -25,9 +24,7 @@ public class topView104 {
         }
         while (!q.isEmpty()) {
             QueueObj tmpNode = q.poll();
-            if (!topViewMap.containsKey(tmpNode.hd)) {
-                topViewMap.put(tmpNode.hd, tmpNode.node);
-            }
+            topViewMap.put(tmpNode.hd, tmpNode.node);
 
             if (tmpNode.node.left != null) {
                 q.add(new QueueObj(tmpNode.node.left,
@@ -66,7 +63,7 @@ public class topView104 {
          *** 8
          ** 9
          */
-        Map<Integer, TreeNode> mp = topView(root);
+        Map<Integer, TreeNode> mp = bottomView(root);
         for (Map.Entry<Integer, TreeNode> entry : mp.entrySet()) {
             System.out.print(entry.getValue().val + " ");
         }
