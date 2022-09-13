@@ -4,7 +4,7 @@ import java.util.*;
 
 public class leftrightView106 {
 
-    public static List<List<Integer>> verticalTraversal(TreeNode root) {
+    public static List<List<Integer>> levelLeftRight(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
 
@@ -37,6 +37,33 @@ public class leftrightView106 {
         }
     }
 
+    static List<Integer> right = new ArrayList<>();
+    static List<Integer> left = new ArrayList<>();
+
+    public static List<Integer> preRight(TreeNode root, int level) {
+        if (root == null) {
+            return right;
+        }
+        if (right.size() == level) {
+            right.add(root.val);
+        }
+        preRight(root.right, level + 1);
+        preRight(root.left, level + 1);
+        return right;
+    }
+
+    public static List<Integer> preLeft(TreeNode root, int level) {
+        if (root == null) {
+            return left;
+        }
+        if (left.size() == level) {
+            left.add(root.val);
+        }
+        preLeft(root.left, level + 1);
+        preLeft(root.right, level + 1);
+        return left;
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode l1 = new TreeNode(2);
@@ -62,14 +89,18 @@ public class leftrightView106 {
          *** 8
          ** 9
          */
-        List<List<Integer>> lo = verticalTraversal(root);
+        List<List<Integer>> lo = levelLeftRight(root);
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
         for (List<Integer> list : lo) {
             left.add(list.get(0));
-            right.add(list.get(-1));
+            right.add(list.get(list.size() - 1));
         }
+        System.out.println("LEFT VIEW");
         System.out.println(left);
+        System.out.println(preLeft(root, 0));
+        System.out.println("RIGHT VIEW");
         System.out.println(right);
+        System.out.println(preRight(root, 0));
     }
 }
