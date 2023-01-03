@@ -27,16 +27,6 @@ public class leftrightView106 {
         return wrapList;
     }
 
-    static class Pair {
-        TreeNode first;
-        int second;
-
-        public Pair(TreeNode first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-    }
-
     static List<Integer> right = new ArrayList<>();
     static List<Integer> left = new ArrayList<>();
 
