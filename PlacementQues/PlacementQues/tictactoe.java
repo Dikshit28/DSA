@@ -4,7 +4,7 @@ public class tictactoe {
     // Constructor
     public tictactoe() {
         char[][] grid = new char[3][3];
-        char turn = 'X';
+        // char turn = 'X';
         initializeGrid(grid);
     }
 
