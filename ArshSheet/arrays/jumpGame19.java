@@ -22,6 +22,18 @@ public class jumpGame19 {
         return check;
     }
 
+    public static boolean optimal(int[] nums) {
+        int n = nums.length;
+        int lastIndex = n - 1;
+
+        for (int i = lastIndex; i >= 0; i--) {
+            if (i + nums[i] >= lastIndex) {
+                lastIndex = i;
+            }
+        }
+        return lastIndex == 0;
+    }
+
     public static void main(String[] args) {
         int[] nums = { 2, 0, 0 };
         System.out.println(canJump(nums));

@@ -1,25 +1,19 @@
 package ArshSheet.arrays;
 
-import java.util.HashMap;
-
+/*
+ * https://leetcode.com/problems/subarray-sums-divisible-by-k/discuss/217962/Java-Clean-O(n)-Number-Theory-%2B-Prefix-Sums
+ */
 public class subarraySumDivide10 {
-    static int sovler(int[] arr, int k) {
-        int count = 0;
-        int sum = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        for (int i = 0; i < arr.length; i++) {
-            sum = sum + arr[i];
-            int key = sum % k;
-            if (key < 0) {
-                key = key + k;
-            }
-            if (map.containsKey(key)) {
-                count = map.get(key) + count;
-                map.put(key, map.get(key) + 1);
-            } else {
-                map.put(key, 1);
-            }
+    static int sovler(int[] A, int K) {
+        int[] map = new int[K];
+        map[0] = 1;
+        int count = 0, sum = 0;
+        for (int a : A) {
+            sum = (sum + a) % K;
+            if (sum < 0)
+                sum += K; // Because -1 % 5 = -1, but we need the positive mod 4
+            count += map[sum];
+            map[sum]++;
         }
         return count;
     }
