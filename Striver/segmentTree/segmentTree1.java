@@ -86,5 +86,6 @@ public class segmentTree1 {
         // for (int i : sg2.seg) {
         // System.out.print(i + ", ");
         // }
+        sc.close();
     }
 }

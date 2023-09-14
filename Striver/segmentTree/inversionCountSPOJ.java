@@ -89,7 +89,7 @@ public class inversionCountSPOJ {
             return;
         }
 
-        int mid = (low + high) >> 1;
+        int mid = (low + high) / 2;
         if (i <= mid)
             update(2 * ind + 1, low, mid, i, val);
         else
@@ -129,5 +129,6 @@ public class inversionCountSPOJ {
             System.out.println();
             System.out.println(cnt);
         }
+        scanner.close();
     }
 }
