@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.HashMap;
 
 /*
@@ -17,7 +16,7 @@ class Solution {
             }
             hm.put(target - nums[i], i);
         }
-        return nullvalo;
+        return null;
     }
 }
 // @lc code=end
