@@ -124,7 +124,9 @@ public class inversionCountSPOJ {
             for (int i = 0; i < n; i++) {
                 freq[arr[i]]--;
                 st.update(0, 0, mx - 1, arr[i], -1);
-                cnt += st.query(0, 0, mx - 1, 1, arr[i] - 1);
+                int k = st.query(0, 0, mx - 1, 1, arr[i] - 1);
+                System.out.println("mid val: " + k);
+                cnt += k;
             }
             System.out.println();
             System.out.println(cnt);

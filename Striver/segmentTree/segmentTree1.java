@@ -49,6 +49,7 @@ public class segmentTree1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        sc.close();
         System.out.println("Enter size of array 1");
         int n1 = sc.nextInt();
         int[] arr1 = new int[n1];
